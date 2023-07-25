@@ -1,1 +1,1 @@
-# mod-3.7-s3_sqs
+# Module 3.7 - S3 Event Notification with SQS
