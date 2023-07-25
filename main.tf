@@ -3,12 +3,12 @@ data "aws_iam_policy_document" "queue" {
     effect = "Allow"
 
     principals {
-      type        = "*"
-      identifiers = ["*"]
+      type        = "Service"
+      identifiers = ["s3.amazonaws.com"]
     }
 
     actions   = ["sqs:SendMessage"]
-    resources = ["arn:aws:sqs:*:*:s3-event-notification-queue"]
+    resources = ["arn:aws:sqs:*:*:david-s3-event-notification-queue"]
 
     condition {
       test     = "ArnEquals"
@@ -32,7 +32,7 @@ resource "aws_s3_bucket_notification" "bucket_notification" {
 
   queue {
     queue_arn     = aws_sqs_queue.queue.arn
-    events        = ["s3:ObjectCreated:*"]
-    filter_suffix = ".log"
+    events        = ["s3:ObjectCreated:*","s3:ObjectRemoved:*"]
+  #  filter_suffix = ".log"
   }
 }
