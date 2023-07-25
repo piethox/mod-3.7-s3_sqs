@@ -24,7 +24,7 @@ resource "aws_sqs_queue" "queue" {
 }
 
 resource "aws_s3_bucket" "bucket" {
-  bucket = "david-trigger-bucket1"
+  bucket = "david-trigger-bucket-tf"
 }
 
 resource "aws_s3_bucket_notification" "bucket_notification" {
